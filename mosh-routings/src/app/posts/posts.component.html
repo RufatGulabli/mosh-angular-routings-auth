@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row m-2 p-3">
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      <p class="text-danger lead">{{ errorMessage.message }}</p>
+    </div>
+    <div *ngIf="!errorMessage" class="col-md-7">
+      <input
+        type="text"
+        class="form-control"
+        #newTodo
+        (keyup.enter)="addTodo(newTodo)"
+      />
+      <ul class="list-group m-2">
+        <li
+          class="list-group-item shadow mb-1 bg-white rounded"
+          *ngFor="let post of posts"
+          style="cursor: pointer; box-sizing: border-box"
+        >
+          <div
+            class="d-flex justify-content-between"
+            style="box-sizing: border-box; word-wrap: normal"
+          >
+            {{ post.title }}
+            <div class="d-flex align-items-center">
+              <button
+                class="btn btn-info btn-sm m-1"
+                (click)="updatePost(post, newTodo)"
+              >
+                Update
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="onDelete(post)">
+                Delete
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

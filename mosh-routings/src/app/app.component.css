@@ -1,0 +1,5 @@
+.highlighted {
+  color: blue;
+  background-color: rgb(228, 228, 228);
+  border-radius: 5px;
+}
