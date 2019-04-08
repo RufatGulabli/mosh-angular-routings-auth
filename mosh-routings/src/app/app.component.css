@@ -1,5 +1,5 @@
-.highlighted {
+.current {
   color: blue;
-  background-color: rgb(228, 228, 228);
+  background-color: rgb(245, 244, 244);
   border-radius: 5px;
 }

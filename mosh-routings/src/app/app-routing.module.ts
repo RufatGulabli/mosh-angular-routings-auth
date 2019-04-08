@@ -1,11 +1,12 @@
 import { FollowerPageComponent } from "./follower-page/follower-page.component";
 import { HomePageComponent } from "./home-page/home-page.component";
-import { AppComponent } from "./app.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { GithubFollowersComponent } from "./github-followers/github-followers.component";
 import { NotFoundPageComponent } from "./not-found-page/not-found-page.component";
 import { PostsComponent } from "./posts/posts.component";
+import { LoginComponent } from "./login/login.component";
+import { NoAccessComponent } from "./no-access/no-access.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -14,6 +15,8 @@ const routes: Routes = [
   { path: "followers/:username", component: GithubFollowersComponent },
   { path: "followers/:id/:login", component: FollowerPageComponent },
   { path: "followers", component: GithubFollowersComponent },
+  { path: "login", component: LoginComponent },
+  { path: "noaccess", component: NoAccessComponent },
   { path: "**", component: NotFoundPageComponent }
 ];
 
@@ -28,5 +31,7 @@ export const RoutingsComponent = [
   PostsComponent,
   FollowerPageComponent,
   GithubFollowersComponent,
+  LoginComponent,
+  NoAccessComponent,
   NotFoundPageComponent
 ];

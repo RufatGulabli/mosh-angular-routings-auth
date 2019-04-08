@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6 shadow rounded p-3 m-5">
+      <form class="form-sigin" #f="ngForm" (ngSubmit)="login(f.value)">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            ngModel
+            name="username"
+            type="email"
+            class="form-control"
+            id="username"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            ngModel
+            name="password"
+            type="password"
+            class="form-control"
+            id="password"
+          />
+        </div>
+        <button type="button" (click)="onSubmit()" class="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
