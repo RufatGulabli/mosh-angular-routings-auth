@@ -9,6 +9,7 @@ import { PostsComponent } from "./posts/posts.component";
 import { FollowerPageComponent } from "./follower-page/follower-page.component";
 import { LoginComponent } from "./login/login.component";
 import { NoAccessComponent } from "./no-access/no-access.component";
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NoAccessComponent } from "./no-access/no-access.component";
     RoutingsComponent,
     FollowerPageComponent,
     LoginComponent,
-    NoAccessComponent
+    NoAccessComponent,
+    AdminComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

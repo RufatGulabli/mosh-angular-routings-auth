@@ -17,8 +17,20 @@
         </li>
       </ul>
       <div>
-        <button class="btn btn-primary btn-sm m-1" (click)="goToLoginPage()">
+        <button
+          *ngIf="!authService.isLoggedIn()"
+          class="btn btn-primary btn-sm m-1"
+          (click)="goToLoginPage()"
+        >
           Login
+        </button>
+        <button class="btn btn-info btn-sm m-1">Admin Page</button>
+        <button
+          *ngIf="authService.isLoggedIn()"
+          class="btn btn-warning btn-sm m-1"
+          (click)="authService.logOut()"
+        >
+          Logout
         </button>
       </div>
     </div>

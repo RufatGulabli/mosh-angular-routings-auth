@@ -1,3 +1,4 @@
+import { AdminComponent } from "./admin/admin.component";
 import { FollowerPageComponent } from "./follower-page/follower-page.component";
 import { HomePageComponent } from "./home-page/home-page.component";
 import { NgModule } from "@angular/core";
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: "followers/:id/:login", component: FollowerPageComponent },
   { path: "followers", component: GithubFollowersComponent },
   { path: "login", component: LoginComponent },
+  { path: "admin", component: AdminComponent },
   { path: "noaccess", component: NoAccessComponent },
   { path: "**", component: NotFoundPageComponent }
 ];
@@ -33,5 +35,6 @@ export const RoutingsComponent = [
   GithubFollowersComponent,
   LoginComponent,
   NoAccessComponent,
+  AdminComponent,
   NotFoundPageComponent
 ];

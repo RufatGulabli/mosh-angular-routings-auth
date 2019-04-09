@@ -12,13 +12,17 @@ app.use(cors());
 
 const PORT = 3001;
 
+app.get("/", (req, res) => {
+  res.json("Hello World");
+});
+
 app.post("/login", (req, res) => {
   try {
     let { username, password } = req.body;
     console.log(username, password);
     let user = Users.find(u => u.username === username);
     console.log("User : \n", user);
-    if (username === user.username && password === user.password) {
+    if (user && username === user.username && password === user.password) {
       let token = jwt.sign(
         {
           username: user.username,
@@ -28,7 +32,7 @@ app.post("/login", (req, res) => {
         },
         "afrasiyab"
       );
-      res.status(200).json(token);
+      res.status(200).json({ token });
     } else {
       res
         .status(400)
