@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { catchError, switchMap, map } from "rxjs/operators";
 import { throwError, Observable, of } from "rxjs";
 import { User } from "../models/User";
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: "root"
@@ -23,15 +24,22 @@ export class AuthService {
     );
   }
 
-  isLoggedIn() {
+  token(): User {
     let token = localStorage.getItem("token");
-    // let jwt = new JwtHelper();
-    // let user = jwt.decodeToken(token);
-    // console.log("User => ", user);
+    let jwt = new JwtHelperService();
+    return jwt.decodeToken(token) as User;
+  }
+
+  isLoggedIn() {
+    let token = this.token();
     if (token) {
       return true;
     }
     return false;
+  }
+
+  isAdmin(): boolean {
+    return this.token().isAdmin;
   }
 
   logOut() {
