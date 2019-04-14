@@ -15,4 +15,8 @@ export class HomePageComponent implements OnInit {
   goToLoginPage() {
     this.router.navigate(["login"]);
   }
+
+  goToAdminPage() {
+    this.router.navigate(["admin"]);
+  }
 }

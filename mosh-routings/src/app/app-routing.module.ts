@@ -8,6 +8,8 @@ import { NotFoundPageComponent } from "./not-found-page/not-found-page.component
 import { PostsComponent } from "./posts/posts.component";
 import { LoginComponent } from "./login/login.component";
 import { NoAccessComponent } from "./no-access/no-access.component";
+import { AuthGuard } from "./services/auth-guard.service";
+import { AdminGuard } from "./services/admin-guard.service";
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -17,7 +19,11 @@ const routes: Routes = [
   { path: "followers/:id/:login", component: FollowerPageComponent },
   { path: "followers", component: GithubFollowersComponent },
   { path: "login", component: LoginComponent },
-  { path: "admin", component: AdminComponent },
+  {
+    path: "admin",
+    component: AdminComponent,
+    canActivate: [AuthGuard, AdminGuard]
+  },
   { path: "noaccess", component: NoAccessComponent },
   { path: "**", component: NotFoundPageComponent }
 ];

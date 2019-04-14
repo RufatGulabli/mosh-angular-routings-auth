@@ -27,6 +27,7 @@
         <button
           *ngIf="authService.isLoggedIn() && authService.isAdmin()"
           class="btn btn-info btn-sm m-1"
+          (click)="goToAdminPage()"
         >
           Admin Page
         </button>

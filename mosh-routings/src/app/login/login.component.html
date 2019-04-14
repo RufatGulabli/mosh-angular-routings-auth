@@ -2,7 +2,9 @@
   <div class="row d-flex justify-content-center">
     <div class="col-md-6 shadow rounded p-3 m-5">
       <div *ngIf="errorText">
-        <div class="alert alert-danger">{{ errorText.error.message }}</div>
+        <div class="alert alert-danger">
+          {{ errorText.statusText }}
+        </div>
       </div>
       <form class="form-sigin" #f="ngForm" (ngSubmit)="login(f.value)">
         <div class="form-group">

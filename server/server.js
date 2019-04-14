@@ -10,18 +10,16 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const PORT = 3001;
+const PORT = 3002;
 
 app.get("/", (req, res) => {
   res.json("Hello World");
 });
 
-app.post("/login", (req, res) => {
+app.post("/login", async (req, res) => {
   try {
     let { username, password } = req.body;
-    console.log(username, password);
     let user = Users.find(u => u.username === username);
-    console.log("User : \n", user);
     if (user && username === user.username && password === user.password) {
       let token = jwt.sign(
         {
@@ -41,6 +39,10 @@ app.post("/login", (req, res) => {
   } catch (error) {
     res.status(500).json(error);
   }
+});
+
+app.get("/products", async (req, res) => {
+  console.log(req.header);
 });
 
 // function generateToken(username, password) {}
