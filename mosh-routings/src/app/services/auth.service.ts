@@ -12,9 +12,9 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(value: any): Observable<boolean> {
-    return this.http.post<User>("http://localhost:3001/login", value).pipe(
+    return this.http.post<User>("http://localhost:3002/login", value).pipe(
       map((obj: any) => {
-        if (obj.token) {
+        if (obj && obj.token) {
           localStorage.setItem("token", obj.token);
           return true;
         }
@@ -24,22 +24,33 @@ export class AuthService {
     );
   }
 
-  token(): User {
+  get currentUser(): User | null {
     let token = localStorage.getItem("token");
-    let jwt = new JwtHelperService();
-    return jwt.decodeToken(token) as User;
+    if (!token) {
+      return null;
+    }
+    return new JwtHelperService().decodeToken(token) as User;
   }
 
-  isLoggedIn() {
-    let token = this.token();
-    if (token) {
-      return true;
-    }
-    return false;
+  // token(): User | null {
+  //   let token = localStorage.getItem("token");
+  //   let jwtToken = new JwtHelperService();
+  //   if (token) {
+  //     let isExpired = jwtToken.isTokenExpired(token);
+  //     let expiredDate = jwtToken.getTokenExpirationDate(token);
+  //     console.log("isExpired : ", isExpired);
+  //     console.log("expiredDate : ", expiredDate);
+  //     return jwtToken.decodeToken(token) as User;
+  //   }
+  //   return null;
+  // }
+
+  isLoggedIn(): boolean {
+    return this.currentUser !== null ? true : false;
   }
 
   isAdmin(): boolean {
-    return this.token().isAdmin;
+    return this.currentUser !== null ? this.currentUser.isAdmin : false;
   }
 
   logOut() {

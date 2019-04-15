@@ -2,7 +2,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { User } from "./../models/User";
 import { Component, OnInit } from "@angular/core";
 import { AuthService } from "./../services/auth.service";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-login",
@@ -13,7 +13,11 @@ export class LoginComponent implements OnInit {
   private credentials = new User();
   public errorText: HttpErrorResponse;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private activatedRouter: ActivatedRoute
+  ) {}
 
   ngOnInit() {}
 
@@ -22,9 +26,13 @@ export class LoginComponent implements OnInit {
     this.credentials.password = value.password;
     this.authService.login(value).subscribe(
       result => {
-        if (result) this.router.navigate(["/followers"]);
+        const returnUrl = this.activatedRouter.snapshot.queryParamMap.get(
+          "returnUrl"
+        );
+        if (result) this.router.navigate([returnUrl || "/home"]);
       },
       (error: HttpErrorResponse) => {
+        console.log(error);
         this.errorText = error;
       }
     );

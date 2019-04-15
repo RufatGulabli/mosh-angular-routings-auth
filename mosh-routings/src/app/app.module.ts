@@ -9,7 +9,9 @@ import { PostsComponent } from "./posts/posts.component";
 import { FollowerPageComponent } from "./follower-page/follower-page.component";
 import { LoginComponent } from "./login/login.component";
 import { NoAccessComponent } from "./no-access/no-access.component";
-import { AdminComponent } from './admin/admin.component';
+import { AdminComponent } from "./admin/admin.component";
+import { AuthGuard } from "./services/auth-guard.service";
+import { AdminGuard } from "./services/admin-guard.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import { AdminComponent } from './admin/admin.component';
     AdminComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [],
+  providers: [AuthGuard, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
