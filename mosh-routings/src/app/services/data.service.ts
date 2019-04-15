@@ -6,9 +6,6 @@ import { BadInput } from "../custom-errors/BadInput";
 import { AppError } from "../custom-errors/AppError";
 import { NotFoundError } from "../custom-errors/NotFoundError";
 
-@Injectable({
-  providedIn: "root"
-})
 export class DataService {
   constructor(private url: string, private http: HttpClient) {}
 

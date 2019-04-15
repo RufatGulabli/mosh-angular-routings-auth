@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   private credentials = new User();
-  private errorText: HttpErrorResponse;
+  public errorText: HttpErrorResponse;
 
   constructor(private authService: AuthService, private router: Router) {}
 

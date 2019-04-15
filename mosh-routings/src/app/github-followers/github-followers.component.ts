@@ -11,7 +11,7 @@ import { switchMap } from "rxjs/operators";
   styleUrls: ["./github-followers.component.css"]
 })
 export class GithubFollowersComponent implements OnInit {
-  private followers: Follower[];
+  public followers: Follower[];
 
   constructor(
     private followerService: FollowersService,
