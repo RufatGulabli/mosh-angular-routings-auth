@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./admin.component.css"]
 })
 export class AdminComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  constructor(public authService: AuthService) {}
 
   ngOnInit() {}
 }
